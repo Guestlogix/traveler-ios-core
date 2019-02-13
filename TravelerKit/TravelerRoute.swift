@@ -37,7 +37,8 @@ extension PassengerRoute: Route {
         urlRequest.addValue(Traveler.shared?.device.identifier ?? "[NO_DEVICE]", forHTTPHeaderField: "x-device-id")
         urlRequest.addValue(Traveler.shared?.device.osVersion ?? "[NO_OS_VERSION]", forHTTPHeaderField: "x-os-version")
         urlRequest.addValue(Locale.current.languageCode ?? "en", forHTTPHeaderField: "x-language")
-        urlRequest.addValue(Locale.current.variantCode ?? "en_POSIX", forHTTPHeaderField: "x-region")
+        urlRequest.addValue(Locale.current.regionCode ?? "US", forHTTPHeaderField: "x-region")
+        urlRequest.addValue(Locale.current.identifier, forHTTPHeaderField: "x-locale")
         urlRequest.addValue(Bundle.main.bundleIdentifier ?? "[NO_BUNDLE_IDENTIFIER]", forHTTPHeaderField: "x-application-id")
         urlRequest.addValue(TimeZone.current.identifier, forHTTPHeaderField: "x-timezone")
 
