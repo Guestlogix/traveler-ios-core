@@ -45,7 +45,7 @@ public class BookingContext {
 
     internal var availability: Availability?
 
-    let product: Product
+    public let product: Product
 
     public init(product: Product) {
         self.product = product
