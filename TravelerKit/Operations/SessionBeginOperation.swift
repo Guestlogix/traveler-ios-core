@@ -24,10 +24,11 @@ class SessionBeginOperation: ConcurrentOperation {
     override func execute() {
         let session = self.session
 
-        let restoreOperation = KeychainReadOperation(key: tokenKeychainKey)
+        //let restoreOperation = KeychainReadOperation(key: tokenKeychainKey)
 
         let authOperation = AuthOperation(session: session)
 
+        /*
         let tokenOperation = BlockOperation { [unowned restoreOperation, unowned authOperation] in
             guard let data = restoreOperation.data else {
                 return
@@ -40,17 +41,18 @@ class SessionBeginOperation: ConcurrentOperation {
                 Log("Error decoding token", data: error, level: .error)
             }
         }
+ */
 
         let finishOperation = BlockOperation { [unowned self] in
             self.finish()
         }
 
-        authOperation.addDependency(tokenOperation)
-        tokenOperation.addDependency(restoreOperation)
+        //authOperation.addDependency(tokenOperation)
+        //tokenOperation.addDependency(restoreOperation)
         finishOperation.addDependency(authOperation)
 
-        internalQueue.addOperation(restoreOperation)
-        internalQueue.addOperation(tokenOperation)
+        //internalQueue.addOperation(restoreOperation)
+        //internalQueue.addOperation(tokenOperation)
         internalQueue.addOperation(authOperation)
         internalQueue.addOperation(finishOperation)
     }
