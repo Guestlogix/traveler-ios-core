@@ -77,9 +77,9 @@ enum AuthPath {
                             [
                                 "id": pass.id,
                                 "title": pass.name,
-                                "answers": form.answers(passAt: index).map({ (answer) in
+                                "answers": form.answers(passAt: index).enumerated().map({ (i, answer) in
                                     [
-                                        "id": answer.questionId,
+                                        "id": pass.questions[i].id,
                                         "value": answer.codedValue
                                     ]
                                 }),
