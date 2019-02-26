@@ -20,9 +20,8 @@ public struct CatalogItemDetails: Decodable, Product {
     public let priceStartingAt: Price
     public let purchaseStrategy: PurchaseStrategy
 
-    public var price: Double {
-        // TODO: Convert currency
-        return priceStartingAt.value
+    public var price: Price {
+        return priceStartingAt
     }
 
     enum CodingKeys: String, CodingKey {

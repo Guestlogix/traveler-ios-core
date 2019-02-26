@@ -48,11 +48,13 @@ extension Array where Element == Pass {
 extension Dictionary where Key == Pass, Value == Int {
     public var subTotalDescription: String? {
         var value: Double = 0
-
+        var currency: String  = "USD"
+        
         for (pass, quantity) in self {
             value += (Double(quantity) * pass.price.value)
+            currency = pass.price.currency
         }
-
-        return value.priceDescription()
+        
+        return Price(value: value, currency: currency).localizedDescription
     }
 }
