@@ -12,7 +12,7 @@ import Foundation
  Refer to Flight.swift for nested JSON structure
  **/
 
-public struct Airport: Decodable {
+public struct Airport: Decodable, Equatable {
     public let code: String
     public let name: String
     public let city: String
