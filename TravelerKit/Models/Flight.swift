@@ -56,7 +56,15 @@ import Foundation
  }
  **/
 
-public struct Flight: Decodable {
+public struct Flight: Decodable, Equatable {
+    public static func == (lhs: Flight, rhs: Flight) -> Bool {
+        return lhs.id == rhs.id
+        && lhs.number == rhs.number
+        && lhs.departureAirport == rhs.departureAirport
+        && lhs.arrivalAirport == rhs.arrivalAirport
+        && lhs.departureDate == rhs.departureDate
+    }
+    
     public let id: String
     public let number: String
     public let departureAirport: Airport
