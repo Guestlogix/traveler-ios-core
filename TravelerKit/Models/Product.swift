@@ -10,6 +10,6 @@ import Foundation
 
 public protocol Product {
     var id: String { get }
-    var price: Double { get }
+    var price: Price { get }
     var title: String { get }
 }

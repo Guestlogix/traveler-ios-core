@@ -13,6 +13,17 @@ public struct Price: Decodable {
     public let currency: String
 
     public var localizedDescription: String? {
-        return value.priceDescription(currencyCode: currency)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        numberFormatter.numberStyle = .currency
+        numberFormatter.currencySymbol = getSymbol()
+        
+        return numberFormatter.string(for: self.value)
+    }
+    
+    func getSymbol() -> String? {
+        let locale = NSLocale(localeIdentifier: currency)
+        
+        return locale.displayName(forKey: .currencySymbol, value: currency)
     }
 }
